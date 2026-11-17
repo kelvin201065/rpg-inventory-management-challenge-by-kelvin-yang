@@ -1,0 +1,358 @@
+"""
+This program is a game where you are given a fixed budget and you have
+to build the best computer with the budget you're given.
+"""
+
+import random
+import os
+
+def clear_screen():
+     os.system('cls' if os.name == 'nt' else 'clear')
+
+# code for the whole game into a function for replay mechanic
+
+def pc_building_code():
+     def line_break():
+          print("_" * 50)
+
+     print("Welcome! Your goal is to build the best computer for your budget!")
+     line_break()
+
+     # declaring lists
+     
+     cases = ["small black case - $60", "medium black case- $70", "small white case - $65", "medium white case - $75", "no case - $0"]
+     cpu = ["AMD Ryzen 5 9600X - $220", "Intel Core i9-14900K - $560", "AMD Ryzen 7 9800X3D - $470", "Intel Core i3-8100 - $35", "Intel Core i5-14400F - $170"]
+     gpu = ["ASUS GeForce RTX 5070 - $940", "MSI NVIDIA GeForce RTX 3060 - $470", "GeForce GTX 1050 Ti - $60", "GeForce RTX 3050 6GB - $300", "no gpu - $0"]
+     ram = ["Corsair Vengeance RGB 32GB DDR5 - $300", "Corsair 16GB DDR5 Vengeance - $200", "CORSAIR Vengeance RGB 16GB DDR4 - $150", "8 gb DDR3 - $25"]
+     psu = ["Thermaltake Smart 700W - $60", "ASUS Pro WS 3000W - $800", "Thermaltake Toughpower GT 1200W - $130", "Pure Power 13 M 1000W - $100"]
+     ssd = ["Team Group 1TB T-Force - $100", "Samsung 990 PRO 2 SSD 2TB - $250", "Samsung 3TB SSD - $500", "Samsung 4TB SSD - $650", "Samsung 500GB SSD - $50"]
+
+     # setting home screen
+     
+     budget = random.randrange(500, 3001, 10) 
+     og_budget = budget
+     print("\nbudget: $" + str(budget))
+     budget = budget
+     line_break()
+     build = []
+
+     # cpu products menu
+    
+     print("CASES: ")
+     print("\n")
+
+     item_number = 1
+
+     for item in cases:
+          print(str(item_number), ". " + (item))
+          item_number = item_number + 1
+
+     user_cases = input("\nEnter the number of the item you want to purchase!: ")
+
+     if user_cases == "1":
+          budget = budget - 60
+          line_break()
+          print("$" + str(budget))
+          build.append(cases[0])
+          performance_stats = 0
+          performance_stats = performance_stats + 1
+     elif user_cases == "2":
+          budget = budget - 70
+          line_break()
+          print("$" + str(budget))
+          build.append(cases[1])
+          performance_stats = 0
+          performance_stats = performance_stats + 2
+     elif user_cases == "3":
+          budget = budget - 65
+          line_break()
+          print("$" + str(budget))
+          build.append(cases[2])
+          performance_stats = 0
+          performance_stats = performance_stats + 3
+     elif user_cases == "4":
+          budget = budget - 75
+          line_break()
+          print("$" + str(budget))
+          build.append(cases[3])
+          performance_stats = 0
+          performance_stats = performance_stats + 4
+     else: 
+          if user_cases == "5":
+               budget = budget - 0
+               line_break()
+               print("$" + str(budget))
+               build.append(cases[4])
+               performance_stats = 0
+
+     item_number = 1
+
+     line_break()
+     print("CPU: ")
+     print("\n")
+
+     # cpu purchase menu
+
+     for item in cpu:
+          print(str(item_number), ". " + (item))
+          item_number = item_number + 1
+
+     user_cpu = input("\nEnter the number of the item you want to purchase!: ")
+
+     if user_cpu == "1":
+          budget = budget - 220
+          line_break()
+          print("$" + str(budget))
+          build.append(cpu[0])
+          performance_stats = performance_stats + 3
+     elif user_cpu == "2":
+          budget = budget - 560
+          line_break()
+          print("$" + str(budget))
+          build.append(cpu[1])
+          performance_stats = performance_stats + 5
+     elif user_cpu == "3":
+          budget = budget - 470
+          line_break()
+          performance_stats = performance_stats + 4
+          print("$" + str(budget))
+          build.append(cpu[2])
+     elif user_cpu == "4":
+          budget = budget - 60
+          line_break()
+          print("$" + str(budget))
+          build.append(cpu[3])
+          performance_stats = performance_stats + 1
+     else:
+         if user_cpu == "5":
+            budget = budget - 300
+            line_break()
+            print("$" + str(budget))
+            build.append(cpu[4])
+            performance_stats = performance_stats + 2
+
+     item_number = 1
+
+     line_break()
+     print("GPU: ")
+     print("\n")
+
+     # gpu purchase menu
+
+     for item in gpu:
+          print(str(item_number), ". " + (item))
+          item_number = item_number + 1
+
+     user_gpu = input("\nEnter the number of the item you want to purchase!: ")
+
+     if user_gpu == "1":
+          budget = budget - 940
+          line_break()
+          print("$" + str(budget))
+          build.append(gpu[0])
+          performance_stats = performance_stats + 5
+          
+     elif user_gpu == "2":
+          budget = budget - 470
+          line_break()
+          print("$" + str(budget))
+          build.append(gpu[1])
+          performance_stats = performance_stats + 4
+     elif user_gpu == "3":
+          budget = budget - 60
+          line_break()
+          print("$" + str(budget))
+          build.append(gpu[2])
+          performance_stats = performance_stats + 2
+     elif user_gpu == "4":
+          budget = budget - 300
+          line_break()
+          print("$" + str(budget))
+          build.append(gpu[3])
+          performance_stats = performance_stats + 3
+     else: 
+          if user_gpu == "5":
+               budget = budget - 0
+               line_break()
+               print("$" + str(budget))
+               build.append(gpu[4])
+
+     item_number = 1
+
+     # RAM purchase screen
+
+     line_break()
+     print("RAM: ")
+     print("\n")
+
+
+     for item in ram:
+          print(str(item_number), ". " + (item))
+          item_number = item_number + 1
+
+     user_ram = input("\nEnter the number of the item you want to purchase!: ")
+
+     line_break()
+     print("RAM: ")
+     print("\n")
+
+     if user_ram == "1":
+          budget = budget - 300
+          line_break()
+          print("$" + str(budget))
+          build.append(ram[0])
+          performance_stats = performance_stats + 4
+     elif user_ram == "2":
+          budget = budget - 200
+          line_break()
+          print("$" + str(budget))
+          build.append(ram[1])
+          performance_stats = performance_stats + 3
+     elif user_ram == "3":
+          budget = budget - 150
+          line_break()
+          print("$" + str(budget))
+          build.append(ram[2])
+          performance_stats = performance_stats + 2
+     else:
+          if user_ram == "4":
+               budget = budget - 25
+               line_break()
+               print("$" + str(budget))
+               build.append(ram[3])
+               performance_stats = performance_stats + 1
+     item_number = 1
+
+     # psu purcahse menu
+
+     line_break()
+     print("PSU: ")
+     print("\n")
+
+
+     for item in psu:
+          print(str(item_number), ". " + (item))
+          item_number = item_number + 1
+
+     user_psu = input("\nEnter the number of the item you want to purchase!: ")
+
+     if user_psu == "1":
+          budget = budget - 60
+          line_break()
+          print("$" + str(budget))
+          build.append(psu[0])
+          performance_stats = performance_stats + 1
+     elif user_psu == "2":
+          budget = budget - 800
+          line_break()
+          print("$" + str(budget))
+          build.append(psu[1])
+          performance_stats = performance_stats + 4
+     elif user_psu == "3":
+          budget = budget - 130
+          line_break()
+          print("$" + str(budget))
+          build.append(psu[2])
+          performance_stats = performance_stats + 3
+     else: 
+          if user_psu == "4":
+               budget = budget - 100
+               line_break()
+               print("$" + str(budget))
+               build.append(psu[3])
+               performance_stats = performance_stats + 2
+
+     item_number = 1
+
+     # ssd purcahse menu
+
+     line_break()
+     print("SSD: ")
+     print("\n")
+
+
+     for item in ssd:
+          print(str(item_number), ". " + (item))
+          item_number = item_number + 1
+
+     user_ssd = input("\nEnter the number of the item you want to purchase!: ")
+
+     if user_ssd == "1":
+          budget = budget - 100
+          line_break()
+          print("$" + str(budget))
+          build.append(ssd[0])
+          performance_stats = performance_stats + 2
+     elif user_ssd == "2":
+          budget = budget - 250
+          line_break()
+          print("$" + str(budget))
+          build.append(ssd[1])
+          performance_stats = performance_stats + 3
+     elif user_ssd == "3":
+          budget = budget - 500
+          line_break()
+          print("$" + str(budget))
+          build.append(ssd[2])
+          performance_stats = performance_stats + 4
+     elif user_ssd == "4":
+          budget = budget - 650
+          line_break()
+          print("$" + str(budget))
+          build.append(ssd[3])
+          performance_stats = performance_stats + 5
+     else: 
+          if user_ssd == "5":
+               budget = budget - 50
+               line_break()
+               print("$" + str(budget))
+               build.append(ssd[4])
+               performance_stats = performance_stats + 1
+
+     item_number = 1
+     
+     # Making the end screen
+     
+     line_break()
+     print("FINAL BUILD: ")
+     print("\n")
+     for item in build:
+          print(str(item_number) + ". " + (item))
+          item_number = item_number + 1
+     print("\n")
+     print("original budget: $" + str(og_budget))
+     
+     # Game replay loop along with performance summary
+     
+     if budget >=0:
+         if performance_stats <= 5:
+             print("\n50/50 that this turns on...")
+         elif performance_stats <= 10:
+            print("\nNot the best but still a computer! \nMight be stuck on 60 fps or lower")
+         elif performance_stats <= 19:
+            print("\nVery decent PC you got! \nCan run almost every game!")
+         elif performance_stats <= 26:
+            print("\nOne of the best computers you can build here! \nyou can run any game 120+ fps!")
+         else:
+            print("CONGRATS!! You built THE BEST computer in the game!")
+         line_break()
+         restart = input("\nWould you like to play again? (yes/no): ")
+         if restart == "yes":
+              clear_screen()
+              pc_building_code()
+         else:
+            print("\nThank you for playing my game!")
+     else:
+        if budget < 0:
+            print("\n")
+            print(str("_" * 10) + ("!!!YOU WENT OUT OF YOUR BUDGET!!!") + ("_" * 10))
+            line_break()
+            budget_restart = input("\n Would you like to restart? (yes/no): ")
+            if budget_restart == ("yes"):
+                line_break()
+                print("\n")
+                clear_screen()
+                pc_building_code()  
+            else:
+                print("\nThank you for playing my game!")
+pc_building_code()
